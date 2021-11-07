@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618329750881",
+    "project_id": "apsolut-e6d80",
+    "storage_bucket": "apsolut-e6d80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618329750881:android:e0654e31c30efdd0511920",
+        "android_client_info": {
+          "package_name": "com.example.apsolute"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618329750881-b38i7s4rn5putpc8uq6vfnd15uvssrk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKqX6xxYRT-ID3bOLXmZXqAQOjcr5hbpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618329750881-b38i7s4rn5putpc8uq6vfnd15uvssrk1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

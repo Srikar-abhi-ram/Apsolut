@@ -1,7 +1,7 @@
 import 'dart:async';
-  import 'package:flutter/material.dart';
-  import 'home.dart';
-  import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
   class SplashScreen2 extends StatefulWidget {
   @override
@@ -96,13 +96,10 @@ import 'dart:async';
       );
       });
       }
-
-
-
-
-      void main()async{
-  // await Firebase.initializeApp();
-  // WidgetsFlutterBinding.ensureInitialized();
+ void main()async{
+   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
   runApp(MaterialApp(home: SplashScreen2()));
 
   }
+
