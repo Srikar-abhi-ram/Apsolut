@@ -10,6 +10,11 @@ class Editariba extends StatefulWidget {
 }
 
 class _EditaribaState extends State<Editariba> {
+
+
+  final Stream<QuerySnapshot> _equipStream = FirebaseFirestore.instance.collection('Ariba').snapshots();
+
+
   TextEditingController sampledata1 = new TextEditingController();
   TextEditingController sampledata2 = new TextEditingController();
   TextEditingController sampledata3 = new TextEditingController();
@@ -52,11 +57,13 @@ class _EditaribaState extends State<Editariba> {
                   ),
                   SizedBox(height: 30,),
 
-                FlatButton(onPressed: (){
+                ElevatedButton(
+                  onPressed: (){
                       Map<String,dynamic> data ={"feild1":sampledata1.text,"feild2":sampledata2.text,"feild3":sampledata3.text,"feild4":sampledata4.text };
                       FirebaseFirestore.instance.collection("Ariba").add(data);
                 }, 
-                child: Text("submit"), color: Colors.blueAccent,)
+                child: Text("submit"),
+                )
               ]
               )
               )
