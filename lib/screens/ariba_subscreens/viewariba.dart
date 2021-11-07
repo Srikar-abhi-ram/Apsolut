@@ -9,11 +9,13 @@ class ViewAriba extends StatefulWidget {
 }
 
 class _ViewAribaState extends State<ViewAriba> {
- static String  month='Oct';
+ String  month='Oct';
   List monthsList=  ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   final Stream<QuerySnapshot> _aribaStream = FirebaseFirestore.instance.collection('Ariba').snapshots();
   CollectionReference _ariba = FirebaseFirestore.instance.collection('Ariba');
-  CollectionReference _aribaFree = FirebaseFirestore.instance.collection('Ariba').doc(month).collection('free');
+//  Stream<QuerySnapshot> _aribaStream=_ariba.doc('Oct').collection('free').doc('freetotal').snapshots();
+
+ CollectionReference _aribaFree = FirebaseFirestore.instance.collection('Ariba').doc('Oct').collection('free');
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,8 @@ class _ViewAribaState extends State<ViewAriba> {
         children:[
             Text("Select Month ",
               style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 29
-            ),),
+            ),
+            ),
             SizedBox(height: 30,),
             DropdownButton(
               hint: Text('Select Month'),
@@ -45,6 +48,107 @@ class _ViewAribaState extends State<ViewAriba> {
               }).toList(),
             ),
               SizedBox(height: 30,),
+
+            Table(
+              //border: TableBorder.all(),
+              //defaultColumnWidth:FlexColumnWidth(1.0) ,
+              children: [
+                TableRow(
+                  children: [
+                   Text('Load',textAlign: TextAlign.center,style: TextStyle(
+                       fontSize: 20,fontWeight: FontWeight.bold
+                   )),
+                    Text("FT",textAlign: TextAlign.center,style: TextStyle(
+                        fontSize: 20,fontWeight: FontWeight.bold
+                    ),
+                    ),
+                    Text(
+                      'Free',textAlign: TextAlign.center,style: TextStyle(
+                        fontSize: 20,fontWeight: FontWeight.bold
+                    ),
+                    ),
+                  ]
+                ),
+
+                TableRow(
+                 children:[
+                   Container(
+                      child:Table(
+                        children: [
+                          TableRow(
+                              children: [
+                                Text(
+                                  '5',textAlign: TextAlign.center,style: TextStyle(
+                                    fontSize: 20,fontWeight: FontWeight.bold
+                                ),
+                                ),
+                                Text(
+                                  '5',textAlign: TextAlign.center,style: TextStyle(
+                                    fontSize: 20,fontWeight: FontWeight.bold
+                                ),
+                                ),
+                              ]
+                          )
+                        ],
+                      )
+                  ),
+                   Text(
+                     'Free',textAlign: TextAlign.center,style: TextStyle(
+                       fontSize: 20,fontWeight: FontWeight.bold
+                   ),
+                   ),
+                   Text(
+                     'Free',textAlign: TextAlign.center,style: TextStyle(
+                       fontSize: 20,fontWeight: FontWeight.bold
+                   ),
+                   ),
+
+                 ],
+                )
+
+              ],
+            ),
+          SizedBox(height: 30,),
+            Table(
+              children: [
+                TableRow(
+                    children: [
+                      Text('PIPE ',
+                        style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 19
+                        ),),
+                      Text('VALUES',
+                        style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 19
+                        ),textAlign: TextAlign.end,),
+                    ]
+                ),
+
+                TableRow(
+                   children: [
+                     Text('DELIVERY PIPE '),
+                     Text('49',textAlign: TextAlign.end,),
+                   ]
+                ),
+                TableRow(
+                    children: [
+                      Text('BREAK EVEN'),
+                      Text('94',textAlign: TextAlign.end,),
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      Text('TOTAL PIPE'),
+                      Text('49',textAlign: TextAlign.end,),
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      Text('CAPACITY'),
+                      Text('126',textAlign: TextAlign.end,),
+                    ]
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
             StreamBuilder(
                 stream: _aribaFree.doc('freetotal').snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
