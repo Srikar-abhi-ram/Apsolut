@@ -104,7 +104,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
            ),  
           ),
          
-          onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>DEV(),));}
+          onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>Dev(),));}
                    ),
                    SizedBox(height: 0),
                   ]        
