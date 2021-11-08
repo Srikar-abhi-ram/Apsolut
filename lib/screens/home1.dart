@@ -19,6 +19,7 @@ class _Home1State extends State<Home1> {
         child: Center(
           child: Column(
             children: <Widget>[
+              Text("**Position of Graph Bar***"), 
               SizedBox(
                 height: 310,
               ),
