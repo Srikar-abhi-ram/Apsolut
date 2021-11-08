@@ -34,28 +34,28 @@ class _EditaribaState extends State<Editariba> {
                       hintText: "EmpHc"
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: sampledata2,
                     decoration: InputDecoration(
                       hintText: "load mandays"
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: sampledata3,
                     decoration: InputDecoration(
                       hintText: "ft-1"
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: sampledata4,
                     decoration: InputDecoration(
                       hintText: "Free mandays"
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
 
                 ElevatedButton(
                   onPressed: (){
