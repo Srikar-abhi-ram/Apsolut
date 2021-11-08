@@ -62,7 +62,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                   const ListTile(    
                   title: Text('S4',style: TextStyle(fontWeight: FontWeight.bold,fontSize:25,color: Colors.white ),textAlign: TextAlign.center,),  
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
             ],  
            ),  
           ),
@@ -80,7 +80,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                   const ListTile(    
                   title: Text('SMS',style: TextStyle(fontWeight: FontWeight.bold,fontSize:25 ,color: Colors.white),textAlign: TextAlign.center,),  
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
             ],  
            ),  
           ),
@@ -98,7 +98,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                   const ListTile(    
                   title: Text('DEV',style: TextStyle(fontWeight: FontWeight.bold,fontSize:25 ,color: Colors.white),textAlign: TextAlign.center,),  
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               
             ],  
            ),  
