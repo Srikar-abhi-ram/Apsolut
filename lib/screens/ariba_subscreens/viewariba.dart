@@ -20,12 +20,15 @@ class _ViewAribaState extends State<ViewAriba> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text('View'),
+          centerTitle: true,
+          brightness: Brightness.dark,
+          backgroundColor: Colors.black), 
      body:
           Padding(
             padding: EdgeInsets.all(70),
             child: Column(
-         /* children: [
-              Text("View ariba page"),*/
         children:[
             Text("Select Month ",
               style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 29
