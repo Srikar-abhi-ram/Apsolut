@@ -8,6 +8,7 @@ class ViewAriba extends StatefulWidget {
 
 class _ViewAribaState extends State<ViewAriba> {
   String month = 'Oct';
+  int x=18;
   List monthsList = [
     'Jan',
     'Feb',
