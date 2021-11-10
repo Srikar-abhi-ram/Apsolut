@@ -22,6 +22,11 @@ class _AribaState extends State<Ariba> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text('Ariba graph'),
+          centerTitle: true,
+          brightness: Brightness.dark,
+          backgroundColor: Colors.black),
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Colors.white,
