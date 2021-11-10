@@ -63,3 +63,16 @@ const wireless2 = Color(0xfff6d327);
 
 const sundown1 = Color(0xff788cb6);
 const sundown2 = Color(0xfffdb813);
+
+const soda1 = Color(0xffffdd00);
+const soda2 = Color(0xfffbb034);
+
+const warmice1 = Color(0xffffcc2f);
+const warmice11 = Color(0xffffbf00);
+const warmice12 = Color(0xffefa613);
+const warmice13 = Color(0xffe09d18);
+const warmice2 = Color(0xef5734);
+
+//https://www.eggradients.com/category/blue-gradient?83ff460c_page=1
+const fatcat1= Color(0xff89d4cf);
+const fatcat2= Color(0xff734ae8);

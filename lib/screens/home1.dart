@@ -15,11 +15,13 @@ class _Home1State extends State<Home1> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/homebackground.jpg'),
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/homebackground.jpg'),
         
           fit: BoxFit.cover
           )),
-        child:Padding(padding: const EdgeInsets.fromLTRB(0, 90, 0, 300.0),
+        child:Padding(
+          padding: const EdgeInsets.fromLTRB(0, 90, 0, 300.0),
 
           child: LineChart(LineChartData(minX: 0,maxX: 4,minY: 0,maxY: 7,
           titlesData: LineTitles.getTitleData(),

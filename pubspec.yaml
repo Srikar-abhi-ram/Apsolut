@@ -37,6 +37,7 @@ dependencies:
   firebase_core: ^1.10.0
   styled_widget: ^0.4.0+3
   google_fonts: ^2.1.0
+  fl_chart: ^0.40.2
   
 
 

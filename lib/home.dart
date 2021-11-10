@@ -46,8 +46,11 @@ class _VerticalCard4State extends State<VerticalCard4> {
           end: Alignment.bottomRight,
 
           colors: [
-            // sundown2,sundown1
-            wireless2,wireless1
+            // fatcat1,fatcat2
+           warmice13,warmice2
+            //soda1,soda2
+             //sundown2,sundown1
+            //wireless2,wireless1
             ],
         ),
         ),

@@ -22,6 +22,7 @@ class _EditaribaState extends State<Editariba> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: relay1,
+          brightness: Brightness.dark,
           centerTitle: true,
           title: Text("Edit the details"),
         ),
@@ -32,29 +33,29 @@ class _EditaribaState extends State<Editariba> {
                   child: Column(children: <Widget>[
               TextFormField(
                   controller: sampledata1,
-                  decoration: InputDecoration(hintText: "Number of Emp"),
+                  decoration: InputDecoration(hintText: "Number of Free Emp"),
               ),
               SizedBox(
                   height: 20,
               ),
               TextFormField(
                   controller: sampledata2,
-                  decoration: InputDecoration(hintText: "Working days"),
+                  decoration: InputDecoration(hintText: "Ft"),
               ),
               SizedBox(
                   height: 20,
               ),
               TextFormField(
                   controller: sampledata3,
-                  decoration: InputDecoration(hintText: "BreakEven %"),
+                  decoration: InputDecoration(hintText: "Load Emp"),
               ),
                   SizedBox(
                   height: 20,
               ),
-                  TextFormField(
+                 /* TextFormField(
                   controller: sampledata4,
                   decoration: InputDecoration(hintText: ""),
-              ),
+              ),*/
                   SizedBox(
                   height: 20,
               ),
@@ -70,12 +71,15 @@ class _EditaribaState extends State<Editariba> {
                             ),
                           onPressed: () {
                             Map<String, dynamic> data = {
-                              "feild1": sampledata1.text,
-                              "feild2": sampledata2.text,
-                              "feild3": sampledata3.text,
-                              "feild4": sampledata4.text
+                              "freeEmp": sampledata1.text,
+                              "freeMd": int.parse(sampledata1.text)*18,
+                              "ftEmp": sampledata2.text,
+                              "ftMd": int.parse(sampledata2.text)*18,
+                              "loadEmp": sampledata3.text,
+                              "loadMd":int.parse(sampledata3.text)*18,
+                             // "feild4": sampledata4.text
                             };
-                            FirebaseFirestore.instance.collection("Ariba").add(data);
+                            FirebaseFirestore.instance.collection("Ariba").doc("October").update(data);
                           },
                           child: const Text("Submit"),
                         ),
