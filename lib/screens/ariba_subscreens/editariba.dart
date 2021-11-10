@@ -9,13 +9,14 @@ class Editariba extends StatefulWidget {
 class _EditaribaState extends State<Editariba> {
   final Stream<QuerySnapshot> _equipStream =
       FirebaseFirestore.instance.collection('Ariba').snapshots();
-
+  String month ='October';
   TextEditingController sampledata1 = new TextEditingController();
   TextEditingController sampledata2 = new TextEditingController();
   TextEditingController sampledata3 = new TextEditingController();
   TextEditingController sampledata4 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -44,28 +45,38 @@ class _EditaribaState extends State<Editariba> {
                 controller: sampledata3,
                 decoration: InputDecoration(hintText: "ft-1"),
               ),
-              SizedBox(
+                SizedBox(
                 height: 20,
               ),
-              TextFormField(
+                TextFormField(
                 controller: sampledata4,
                 decoration: InputDecoration(hintText: "Free mandays"),
               ),
-              SizedBox(
+                SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Map<String, dynamic> data = {
-                    "feild1": sampledata1.text,
-                    "feild2": sampledata2.text,
-                    "feild3": sampledata3.text,
-                    "feild4": sampledata4.text
-                  };
-                  FirebaseFirestore.instance.collection("Ariba").add(data);
-                },
-                child: Text("submit"),
-              )
+                  ButtonBar(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text("Cancel"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Map<String, dynamic> data = {
+                            "feild1": sampledata1.text,
+                            "feild2": sampledata2.text,
+                            "feild3": sampledata3.text,
+                            "feild4": sampledata4.text
+                          };
+                          FirebaseFirestore.instance.collection("Ariba").add(data);
+                        },
+                        child: const Text("Submit"),
+                      ),
+
+                    ],
+                  )
+
             ]))));
   }
 }
