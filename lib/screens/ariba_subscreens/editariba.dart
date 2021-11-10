@@ -1,3 +1,4 @@
+import 'package:apsolute/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -18,65 +19,71 @@ class _EditaribaState extends State<Editariba> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: relay1,
           centerTitle: true,
           title: Text("Edit the details"),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(70.0),
             child: Center(
-                child: Column(children: <Widget>[
+                child: SingleChildScrollView(
+                  child: Column(children: <Widget>[
               TextFormField(
-                controller: sampledata1,
-                decoration: InputDecoration(hintText: "EmpHc"),
+                  controller: sampledata1,
+                  decoration: InputDecoration(hintText: "Number of Emp"),
               ),
               SizedBox(
-                height: 20,
+                  height: 20,
               ),
               TextFormField(
-                controller: sampledata2,
-                decoration: InputDecoration(hintText: "load mandays"),
+                  controller: sampledata2,
+                  decoration: InputDecoration(hintText: "Working days"),
               ),
               SizedBox(
-                height: 20,
+                  height: 20,
               ),
               TextFormField(
-                controller: sampledata3,
-                decoration: InputDecoration(hintText: "ft-1"),
+                  controller: sampledata3,
+                  decoration: InputDecoration(hintText: "BreakEven %"),
               ),
-                SizedBox(
-                height: 20,
+                  SizedBox(
+                  height: 20,
               ),
-                TextFormField(
-                controller: sampledata4,
-                decoration: InputDecoration(hintText: "Free mandays"),
+                  TextFormField(
+                  controller: sampledata4,
+                  decoration: InputDecoration(hintText: ""),
               ),
-                SizedBox(
-                height: 20,
+                  SizedBox(
+                  height: 20,
               ),
-                  ButtonBar(
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text("Cancel"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Map<String, dynamic> data = {
-                            "feild1": sampledata1.text,
-                            "feild2": sampledata2.text,
-                            "feild3": sampledata3.text,
-                            "feild4": sampledata4.text
-                          };
-                          FirebaseFirestore.instance.collection("Ariba").add(data);
-                        },
-                        child: const Text("Submit"),
-                      ),
+                    ButtonBar(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("Cancel",style: TextStyle(color: relay1),),
+                        ),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: relay2
+                            ),
+                          onPressed: () {
+                            Map<String, dynamic> data = {
+                              "feild1": sampledata1.text,
+                              "feild2": sampledata2.text,
+                              "feild3": sampledata3.text,
+                              "feild4": sampledata4.text
+                            };
+                            FirebaseFirestore.instance.collection("Ariba").add(data);
+                          },
+                          child: const Text("Submit"),
+                        ),
 
-                    ],
-                  )
+                      ],
+                    )
 
-            ]))));
+            ]),
+                ))));
   }
 }

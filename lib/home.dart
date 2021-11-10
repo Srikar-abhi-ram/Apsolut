@@ -24,23 +24,19 @@ class _VerticalCard4State extends State<VerticalCard4> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(250.0),
+        preferredSize: Size.fromHeight(110.0),
         child: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              semanticLabel: 'menu',
-            ),
-            onPressed: () {
-              print('Menu button');
-            },
-          ),
             title: Text(''),
             centerTitle: true,
             brightness: Brightness.dark,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.white,
             elevation: 6,
-            flexibleSpace: Container(decoration: BoxDecoration(image:DecorationImage(image: AssetImage('assets/apsolut.png'),fit: BoxFit.cover)),),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                image:DecorationImage(
+                    image: AssetImage('assets/apsolut.png'),
+                  fit: BoxFit.fill
+                    )),),
             ),
       ),
       body:Container(
@@ -50,9 +46,9 @@ class _VerticalCard4State extends State<VerticalCard4> {
           end: Alignment.bottomRight,
 
           colors: [
-            relay1,
-            relay2,relay3
-          ],
+            // sundown2,sundown1
+            wireless2,wireless1
+            ],
         ),
         ),
         child: Stack(
@@ -75,7 +71,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                        child: Card(
                          shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.all(
-                             Radius.circular(16.0),
+                             Radius.circular(20.0),
                            ),
                          ),
                          elevation: 1,
@@ -103,7 +99,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                        child: Card(
                          shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.all(
-                             Radius.circular(16.0),
+                             Radius.circular(20.0),
                            ),
                          ),
                          elevation: 1,
@@ -130,7 +126,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                        child: Card(
                          shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.all(
-                             Radius.circular(16.0),
+                             Radius.circular(20.0),
                            ),
                          ),
                          elevation: 1,
@@ -155,7 +151,7 @@ class _VerticalCard4State extends State<VerticalCard4> {
                        child: Card(
                          shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.all(
-                             Radius.circular(16.0),
+                             Radius.circular(20.0),
                            ),
                          ),
                          elevation: 1,

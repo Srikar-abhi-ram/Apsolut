@@ -1,3 +1,4 @@
+import 'package:apsolute/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,7 +37,7 @@ class _Home1State extends State<Home1> {
           title: Text('Ariba'),
           centerTitle: true,
           brightness: Brightness.dark,
-          backgroundColor: Colors.purple.shade900),
+          backgroundColor: purpleApp,),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
@@ -48,8 +49,6 @@ class _Home1State extends State<Home1> {
             Text('styled_widget', style: GoogleFonts.sahitya(textStyle: _textStyle))
             // .rotate(angle: -0.1)
                 .padding(right: 15),
-
-
           ],
         ).parent(_widgetStyle)
 

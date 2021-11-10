@@ -54,7 +54,7 @@ class _ViewAribaState extends State<ViewAriba> {
      resizeToAvoidBottomInset: false,
         // backgroundColor: Colors,
         appBar: AppBar(
-            backgroundColor: Colors.purple.shade900,
+            backgroundColor: relay1,
             title: Text('View'),
             centerTitle: true,
             brightness: Brightness.dark,
