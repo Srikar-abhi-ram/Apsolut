@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:apsolute/colors.dart';
+import 'package:apsolute/screens/home1.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -131,6 +134,8 @@ class _EditaribaState extends State<Editariba> {
                             await Future.delayed(Duration(seconds: 5));
                             setState(() {
                               isLoading =false;
+                               Timer(Duration(seconds: 3),(){
+                               Navigator.push( context,MaterialPageRoute( builder:(context)=>Home1(), ));});
                             });
                             FirebaseFirestore.instance.collection("Ariba").doc(month).update(data);
                           },
@@ -139,12 +144,13 @@ class _EditaribaState extends State<Editariba> {
                           Text("please wait...")
                            ])
                            : Text("Submit"),
+                           
                           
                         ),
 
                       ],
-                    )
-
+                    ),
+         
             ]),
                 ))));
   }
