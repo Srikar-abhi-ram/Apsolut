@@ -8,9 +8,27 @@ class Editariba extends StatefulWidget {
 }
 
 class _EditaribaState extends State<Editariba> {
+
+  String month = 'Nov';
+  int x=18;
+  List monthsList = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
+
   final Stream<QuerySnapshot> _equipStream =
       FirebaseFirestore.instance.collection('Ariba').snapshots();
-  String month ='October';
+  String month1 ='October';
   TextEditingController sampledata1 = new TextEditingController();
   TextEditingController sampledata2 = new TextEditingController();
   TextEditingController sampledata3 = new TextEditingController();
@@ -27,10 +45,34 @@ class _EditaribaState extends State<Editariba> {
           title: Text("Edit the details"),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(70.0),
+            padding: const EdgeInsets.all(50.0),
             child: Center(
                 child: SingleChildScrollView(
                   child: Column(children: <Widget>[
+
+                    Text(
+                      "Select Month ",
+                      style: TextStyle(
+                          color: relay2,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 29),
+                    ),
+                SizedBox(height: 10,),
+                    DropdownButton(
+                      hint: Text('Select Month'),
+                      value: month,
+                      onChanged: (newValue) {
+                        setState(() {
+                          month = newValue;
+                          print(month);
+                        });
+                      },
+                      items: monthsList.map((valueItem) {
+                        return DropdownMenuItem(
+                            value: valueItem, child: Text(valueItem));
+                      }).toList(),
+                    ),
+                SizedBox(height: 10,),
               TextFormField(
                   controller: sampledata1,
                   decoration: InputDecoration(hintText: "Number of Free Emp"),
@@ -70,6 +112,7 @@ class _EditaribaState extends State<Editariba> {
                                 primary: relay2
                             ),
                           onPressed: () {
+                            print(month);
                             Map<String, dynamic> data = {
                               "freeEmp": sampledata1.text,
                               "freeMd": int.parse(sampledata1.text)*18,
@@ -78,8 +121,9 @@ class _EditaribaState extends State<Editariba> {
                               "loadEmp": sampledata3.text,
                               "loadMd":int.parse(sampledata3.text)*18,
                              // "feild4": sampledata4.text
+
                             };
-                            FirebaseFirestore.instance.collection("Ariba").doc("October").update(data);
+                            FirebaseFirestore.instance.collection("Ariba").doc(month).update(data);
                           },
                           child: const Text("Submit"),
                         ),

@@ -65,7 +65,8 @@ class _ViewAribaState extends State<ViewAriba> {
           body: Padding(
             padding: EdgeInsets.all(30),
             child: SingleChildScrollView(
-              child: Column(children: [
+              child: Column(
+                  children: [
                 Text(
                   "Select Month ",
                   style: TextStyle(
