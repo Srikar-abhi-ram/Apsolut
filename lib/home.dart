@@ -3,7 +3,9 @@ import 'package:apsolute/screens/s4.dart';
 import 'package:apsolute/screens/sms.dart';
 import 'package:flutter/material.dart';
 import 'package:apsolute/screens/ariba.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animated_background/animated_background.dart';
 
 import 'colors.dart';
 class VerticalCard4 extends StatefulWidget {
@@ -11,7 +13,7 @@ class VerticalCard4 extends StatefulWidget {
   _VerticalCard4State createState() => _VerticalCard4State();
 }
 
-class _VerticalCard4State extends State<VerticalCard4> {
+class _VerticalCard4State extends State<VerticalCard4> with TickerProviderStateMixin{
 
   final TextStyle _textStyle = TextStyle(
     fontWeight: FontWeight.bold,
@@ -39,155 +41,158 @@ class _VerticalCard4State extends State<VerticalCard4> {
                     )),),
             ),
       ),
-      body:Container(
-        decoration: BoxDecoration(
-     gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-
-          colors: [
-             fatcat1,fatcat2
-           // warmice13,warmice2
-             //soda1,soda2
-             //sundown2,sundown1
-            //wireless2,wireless1
-            ],
-        ),
-        ),
-        child: Stack(
-          children: [
-            DraggableScrollableSheet(
-               initialChildSize: 1.0,
-            minChildSize: 0.9,
-            maxChildSize: 1.0,
-            builder: (BuildContext context, myScrollController)
-            {
-              return Padding(
-                padding:const EdgeInsets.all(10.0),
-                child:Container(
-                  child:ListView
-                  (
-                    controller: myScrollController,
-                    children:
-                    [
-                     GestureDetector(
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(
-                             Radius.circular(20.0),
+      body:AnimatedBackground(
+        behaviour:RandomParticleBehaviour(options:ParticleOptions(baseColor: Colors.orange,spawnMinSpeed:20,spawnOpacity:0.9,particleCount: 50,spawnMaxRadius: 20 )),
+        vsync: this,
+        child: Container(
+          /*decoration: BoxDecoration(
+           gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+      
+            colors: [
+               fatcat1,fatcat2
+             // warmice13,warmice2
+               //soda1,soda2
+               //sundown2,sundown1
+              //wireless2,wireless1
+              ],
+          ),
+          ),*/
+          child: Stack(
+            children: [
+              DraggableScrollableSheet(
+                 initialChildSize: 1.0,
+              minChildSize: 0.9,
+              maxChildSize: 1.0,
+              builder: (BuildContext context, myScrollController)
+              {
+                return Padding(
+                  padding:const EdgeInsets.all(10.0),
+                  child:Container(
+                    child:ListView
+                    (
+                      controller: myScrollController,
+                      children:
+                      [
+                       GestureDetector(
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(
+                               Radius.circular(20.0),
+                             ),
                            ),
-                         ),
-                         elevation: 1,
-                        color: Colors.transparent,
-                    child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      SizedBox(height: 40),
+                           elevation: 1,
+                          color: Colors.transparent,
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(height: 40),
+                       ListTile(
+                      title: Text('ARIBA',
+                        style:GoogleFonts.sahitya(textStyle: _textStyle),
+                        //style: TextStyle(fontWeight: FontWeight.bold,fontSize:25,color: Colors.white ),
+                        textAlign: TextAlign.center,),
+                  ),
+                  SizedBox(height: 20),
+                ],
+               ),
+              ),
+      
+              onTap: (){
+                           Navigator.push(context,MaterialPageRoute( builder:(context)=>Ariba(),));}
+                       ),
+                       SizedBox(height: 40),
+              GestureDetector(
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(
+                               Radius.circular(20.0),
+                             ),
+                           ),
+                           elevation: 1,
+                            color: Colors.transparent,
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(height: 40),
                      ListTile(
-                    title: Text('ARIBA',
-                      style:GoogleFonts.sahitya(textStyle: _textStyle),
-                      //style: TextStyle(fontWeight: FontWeight.bold,fontSize:25,color: Colors.white ),
-                      textAlign: TextAlign.center,),
-                ),
-                SizedBox(height: 20),
-              ],
-             ),
-            ),
-
-            onTap: (){
-                         Navigator.push(context,MaterialPageRoute( builder:(context)=>Ariba(),));}
-                     ),
-                     SizedBox(height: 40),
-            GestureDetector(
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(
-                             Radius.circular(20.0),
+                      title: Text('S4',
+                        style:GoogleFonts.sahitya(textStyle: _textStyle),
+      
+                        textAlign: TextAlign.center,),
+                  ),
+                  SizedBox(height: 20),
+                ],
+               ),
+              ),
+      
+              onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>S4(),));}
+                       ),
+                       SizedBox(height: 20),
+                       GestureDetector(
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(
+                               Radius.circular(20.0),
+                             ),
                            ),
-                         ),
-                         elevation: 1,
-                          color: Colors.transparent,
-                    child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      SizedBox(height: 40),
-                   ListTile(
-                    title: Text('S4',
-                      style:GoogleFonts.sahitya(textStyle: _textStyle),
-
-                      textAlign: TextAlign.center,),
-                ),
-                SizedBox(height: 20),
-              ],
-             ),
-            ),
-
-            onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>S4(),));}
-                     ),
-                     SizedBox(height: 20),
-                     GestureDetector(
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(
-                             Radius.circular(20.0),
-                           ),
-                         ),
-                         elevation: 1,
-                          color: Colors.transparent,
-                    child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      SizedBox(height: 40),
-                   ListTile(
-                    title: Text('SMS',style:GoogleFonts.sahitya(textStyle: _textStyle),
-                      textAlign: TextAlign.center,),
-                ),
-                SizedBox(height: 20),
-              ],
-             ),
-            ),
-
-            onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>SMS(),));}
-                     ),
-                     SizedBox(height: 20),
-           GestureDetector(
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(
-                             Radius.circular(20.0),
-                           ),
-                         ),
-                         elevation: 1,
-                          color: Colors.transparent,
-                    child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      SizedBox(height: 40),
+                           elevation: 1,
+                            color: Colors.transparent,
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(height: 40),
                      ListTile(
-                    title: Text('DEV',
-                      style:GoogleFonts.sahitya(textStyle: _textStyle),
-                      textAlign: TextAlign.center,),
-                ),
-                SizedBox(height: 20),
-
-              ],
-             ),
-            ),
-
-            onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>Dev(),));}
-                     ),
-                     SizedBox(height: 0),
-                    ]
-                    )
-                )
-              );
-            }
-            )
-
-        ]
+                      title: Text('SMS',style:GoogleFonts.sahitya(textStyle: _textStyle),
+                        textAlign: TextAlign.center,),
+                  ),
+                  SizedBox(height: 20),
+                ],
+               ),
+              ),
+      
+              onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>SMS(),));}
+                       ),
+                       SizedBox(height: 20),
+             GestureDetector(
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(
+                               Radius.circular(20.0),
+                             ),
+                           ),
+                           elevation: 1,
+                            color: Colors.transparent,
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(height: 40),
+                       ListTile(
+                      title: Text('DEV',
+                        style:GoogleFonts.sahitya(textStyle: _textStyle),
+                        textAlign: TextAlign.center,),
+                  ),
+                  SizedBox(height: 20),
+      
+                ],
+               ),
+              ),
+      
+              onTap: (){Navigator.push(context,MaterialPageRoute( builder:(context)=>Dev(),));}
+                       ),
+                       SizedBox(height: 0),
+                      ]
+                      )
+                  )
+                );
+              }
+              )
+      
+          ]
+        )
+          ),
       )
-    )
     );
   }
 }
-
