@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -39,7 +40,23 @@ class _ViewAribaState extends State<ViewAriba> {
     'Dec'
   ];
 
-  final documentStream =  FirebaseFirestore.instance.collection('Ariba');
+  String _displayText ="Results";
+  final _databse = FirebaseDatabase.instance.reference();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _activateListners();
+  }
+  void _activateListners(){
+    _databse.child("Arkat,Mohan/0/Accountability").onValue.listen((event) {
+      final String description = event.snapshot.key;
+      setState(() {
+        _displayText ='so the incharge of the project GEA is :$description';
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +84,7 @@ class _ViewAribaState extends State<ViewAriba> {
             child: SingleChildScrollView(
               child: Column(
                   children: [
+                    Text(_displayText),
                 Text(
                   "Select Month ",
                   style: TextStyle(
