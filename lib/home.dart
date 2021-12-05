@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:apsolute/screens/ariba.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animated_background/animated_background.dart';
+import 'package:lottie/lottie.dart';
 
 import 'colors.dart';
 class VerticalCard4 extends StatefulWidget {
@@ -41,24 +41,10 @@ class _VerticalCard4State extends State<VerticalCard4> with TickerProviderStateM
                     )),),
             ),
       ),
-      body:AnimatedBackground(
-        behaviour:RandomParticleBehaviour(options:ParticleOptions(baseColor: Colors.orange,spawnMinSpeed:20,spawnOpacity:0.9,particleCount: 50,spawnMaxRadius: 20 )),
-        vsync: this,
-        child: Container(
-          /*decoration: BoxDecoration(
-           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-      
-            colors: [
-               fatcat1,fatcat2
-             // warmice13,warmice2
-               //soda1,soda2
-               //sundown2,sundown1
-              //wireless2,wireless1
-              ],
-          ),
-          ),*/
+      body:
+      Stack(children: [
+      Center(child: Lottie.network('https://assets10.lottiefiles.com/packages/lf20_qvmh6Y.json')),
+         Container(
           child: Stack(
             children: [
               DraggableScrollableSheet(
@@ -192,7 +178,7 @@ class _VerticalCard4State extends State<VerticalCard4> with TickerProviderStateM
           ]
         )
           ),
-      )
+      ],)
     );
   }
 }
