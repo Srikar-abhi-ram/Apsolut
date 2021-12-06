@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:apsolute/colors.dart';
 
-
 class ViewAriba extends StatefulWidget {
   @override
   _ViewAribaState createState() => _ViewAribaState();
@@ -50,8 +49,8 @@ class _ViewAribaState extends State<ViewAriba> {
     _activateListners();
   }
   void _activateListners(){
-    _databse.child("Arkat,Mohan/0/Accountability").onValue.listen((event) {
-      final String description = event.snapshot.key;
+    _databse.child('Katragadda, Ajay Kumar/0/Stream').onValue.listen((event) {
+      final String description = event.snapshot.value;
       setState(() {
         _displayText ='so the incharge of the project GEA is :$description';
       });
@@ -60,31 +59,25 @@ class _ViewAribaState extends State<ViewAriba> {
 
   @override
   Widget build(BuildContext context) {
-/*return StreamBuilder<QuerySnapshot>(
-    stream: documentStream,
-    builder:( BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-      if (snapshot.hasError) {
-        return Text('Something went wrong');
-      }
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return Text("Loading");
-      }*/
-   // var DocData = documentStream.data as DocumentSnapshot;
-
     return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-            backgroundColor: relay1,
-            title: Text('View'),
-            centerTitle: true,
-            brightness: Brightness.dark,
-          ),
-          body: Padding(
-            padding: EdgeInsets.all(30),
-            child: SingleChildScrollView(
+        resizeToAvoidBottomInset: false,
+            appBar: AppBar(
+              backgroundColor: relay1,
+              title: Text('View'),
+              centerTitle: true,
+              brightness: Brightness.dark,
+            ),
+        body: Padding(
+      padding: const EdgeInsets.all(30.0),
+      child:Stack(children: [
+          Text(_displayText),
+        ListView.builder(
+        itemBuilder: (BuildContext context, int index) => EntryItem(data[index]),
+        itemCount: data.length,
+      )
+     /* SingleChildScrollView(
               child: Column(
                   children: [
-                    Text(_displayText),
                 Text(
                   "Select Month ",
                   style: TextStyle(
@@ -349,8 +342,65 @@ class _ViewAribaState extends State<ViewAriba> {
               ]
 
               ),
-            ),
-          ));
-    // });
+            ),*/
+
+        ])
+      ),
+    );
+      
+  }
+}
+
+// One entry in the multilevel list displayed by this app.
+class Entry {
+  const Entry(this.title, [this.children = const <Entry>[]]);
+  final String title;
+  final List<Entry> children;
+}
+
+// Data to display.
+const List<Entry> data = <Entry>[
+  Entry(
+    'Chapter A',
+    <Entry>[
+      Entry(
+        'Section A0',
+        <Entry>[
+          Entry('Item A0.1'),
+          Entry('Item A0.2'),
+        ],
+      ),
+      Entry('Section A1'),
+      Entry('Section A2'),
+    ],
+  ),
+  Entry(
+    'Chapter B',
+    <Entry>[
+      Entry('Section B0'),
+      Entry('Section B1'),
+    ],
+  ),
+];
+
+// Displays one Entry. If the entry has children then it's displayed
+// with an ExpansionTile.
+class EntryItem extends StatelessWidget {
+  const EntryItem(this.entry);
+
+  final Entry entry;
+
+  Widget _buildTiles(Entry root) {
+    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    return ExpansionTile(
+      key: PageStorageKey<Entry>(root),
+      title: Text(root.title),
+      children: root.children.map(_buildTiles).toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildTiles(entry);
   }
 }
