@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,10 +51,13 @@ class _ViewAribaState extends State<ViewAriba> {
     _activateListners();
   }
   void _activateListners(){
-    _databse.child('Katragadda, Ajay Kumar/0/Stream').onValue.listen((event) {
-      final String description = event.snapshot.value;
+    _databse.child('Katragadda, Ajay Kumar/0').onValue.listen((event) {
+      final data  = new Map<String, dynamic>.from(event.snapshot.value);
+      final Accountability = data['Accountability'] as String;
+      final duration  = data['Duration'] as double;
+      final stream = data['Stream'] as String;
       setState(() {
-        _displayText ='so the incharge of the project GEA is :$description';
+        _displayText ='Accountability of the project is :$Accountability \n Stream of the project is :$stream \n duration of the project is :\ ${duration.toStringAsFixed(2)}';
       });
     });
   }
@@ -70,11 +75,13 @@ class _ViewAribaState extends State<ViewAriba> {
         body: Padding(
       padding: const EdgeInsets.all(30.0),
       child:Stack(children: [
-          Text(_displayText),
-        ListView.builder(
+          Text(_displayText,
+          style: TextStyle(fontSize: 20,fontWeight:FontWeight.bold),
+          ),
+        /*ListView.builder(
         itemBuilder: (BuildContext context, int index) => EntryItem(data[index]),
         itemCount: data.length,
-      )
+      )*/
      /* SingleChildScrollView(
               child: Column(
                   children: [
@@ -352,7 +359,7 @@ class _ViewAribaState extends State<ViewAriba> {
 }
 
 // One entry in the multilevel list displayed by this app.
-class Entry {
+/*class Entry {
   const Entry(this.title, [this.children = const <Entry>[]]);
   final String title;
   final List<Entry> children;
@@ -403,4 +410,4 @@ class EntryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return _buildTiles(entry);
   }
-}
+}*/
